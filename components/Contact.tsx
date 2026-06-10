@@ -32,16 +32,17 @@ export default function Contact() {
           </a>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-black grayscale invert">
-  <iframe
-    src="https://www.google.com/maps?q=Mythenstrasse%2022%2C%208840%20Einsiedeln%2C%20Schweiz&output=embed"
-    width="100%"
-    height="450"
-    style={{ border: 0 }}
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  />
-</div>
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-black">
+          <iframe
+            src="https://www.google.com/maps?q=Mythenstrasse%2022%2C%208840%20Einsiedeln%2C%20Schweiz&output=embed"
+            width="100%"
+            height="450"
+            className="grayscale invert contrast-125"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </div>
     </section>
   );
