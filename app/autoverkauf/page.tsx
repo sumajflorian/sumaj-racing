@@ -4,20 +4,20 @@ import WhatsappButton from "@/components/WhatsappButton";
 
 const cars = [
   {
-    name: "Audi RS3 Sportback",
-    year: "2015",
-    km: "115'000 km",
-    power: "367 PS",
-    price: "Preis auf Anfrage",
-    image: "/hero.jpg",
-  },
-  {
     name: "Jaguar XK8 Cabriolet",
     year: "1998",
     km: "48'000 km",
     power: "4.0 V8",
-    price: "Preis auf Anfrage",
-    image: "/hero.jpg",
+    price: "CHF 25'800.-",
+    image: "/jaguar.jpg",
+  },
+  {
+    name: "Skoda Fabia 1.2 TSI",
+    year: "Jahrgang folgt",
+    km: "148'000 km",
+    power: "1.2 TSI",
+    price: "CHF 4'900.-",
+    image: "/skoda.jpg",
   },
 ];
 
@@ -36,22 +36,28 @@ export default function AutoverkaufPage() {
         </h1>
 
         <p className="mb-12 max-w-3xl text-lg text-gray-400">
-          Hier findest du Fahrzeuge, die aktuell über Sumaj Racing zum Verkauf
-          stehen. Bei Interesse kannst du uns direkt kontaktieren.
+          Ausgewählte Fahrzeuge direkt von Sumaj Racing. Gepflegte Fahrzeuge,
+          transparente Angaben und persönliche Beratung.
         </p>
 
         <div className="grid gap-8 md:grid-cols-2">
           {cars.map((car) => (
             <div
               key={car.name}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 transition hover:-translate-y-1 hover:border-red-500"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 transition hover:-translate-y-1 hover:border-red-500"
             >
-              <div className="h-80 overflow-hidden">
+              <div className="relative h-96 overflow-hidden">
                 <img
                   src={car.image}
                   alt={car.name}
-                  className="h-full w-full object-cover opacity-80 grayscale transition duration-700 hover:scale-110 hover:grayscale-0"
+                  className="h-full w-full object-cover opacity-90 grayscale transition duration-700 group-hover:scale-110 group-hover:grayscale-0"
                 />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                <div className="absolute bottom-5 left-5 rounded-xl bg-red-600 px-5 py-3 text-xl font-black">
+                  {car.price}
+                </div>
               </div>
 
               <div className="p-8">
@@ -59,20 +65,35 @@ export default function AutoverkaufPage() {
                   Fahrzeug
                 </p>
 
-                <h2 className="mb-5 text-3xl font-bold">{car.name}</h2>
+                <h2 className="mb-6 text-3xl font-bold">{car.name}</h2>
 
-                <div className="mb-6 grid grid-cols-2 gap-4 text-gray-300">
-                  <p>Jahrgang: {car.year}</p>
-                  <p>Kilometer: {car.km}</p>
-                  <p>Leistung: {car.power}</p>
-                  <p>{car.price}</p>
+                <div className="mb-8 grid grid-cols-2 gap-4 text-gray-300">
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-sm text-gray-500">Jahrgang</p>
+                    <p className="font-bold">{car.year}</p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-sm text-gray-500">Kilometer</p>
+                    <p className="font-bold">{car.km}</p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-sm text-gray-500">Motor</p>
+                    <p className="font-bold">{car.power}</p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-sm text-gray-500">Preis</p>
+                    <p className="font-bold text-red-500">{car.price}</p>
+                  </div>
                 </div>
 
                 <a
                   href="/kontakt"
                   className="inline-block rounded-xl bg-red-600 px-6 py-3 font-bold transition hover:bg-red-700"
                 >
-                  Interesse anmelden
+                  Fahrzeug anfragen
                 </a>
               </div>
             </div>
