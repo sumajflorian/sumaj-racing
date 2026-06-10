@@ -32,34 +32,16 @@ export default function Contact() {
           </a>
         </div>
 
-        <form className="rounded-2xl border border-white/10 bg-black p-8">
-          <input
-            className="mb-4 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none focus:border-red-500"
-            placeholder="Name"
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-black">
+          <iframe
+            src="https://www.google.com/maps?q=Mythenstrasse%2022%2C%208840%20Einsiedeln%2C%20Schweiz&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           />
-
-          <input
-            className="mb-4 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none focus:border-red-500"
-            placeholder="E-Mail"
-          />
-
-          <input
-            className="mb-4 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none focus:border-red-500"
-            placeholder="Telefonnummer"
-          />
-
-          <textarea
-            className="mb-6 h-32 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none focus:border-red-500"
-            placeholder="Worum geht es?"
-          />
-
-          <button
-            type="button"
-            className="w-full rounded-xl bg-red-600 px-6 py-4 font-bold transition hover:bg-red-700"
-          >
-            Anfrage senden
-          </button>
-        </form>
+        </div>
       </div>
     </section>
   );
