@@ -12,6 +12,12 @@ const cars = [
     mfk: "Juni 2024",
     price: "CHF 25'800.-",
     image: "/jaguar.jpg",
+    highlights: [
+      "Schweizer Fahrzeug",
+      "Serviceheft vorhanden",
+      "Unfallfrei",
+      "Nur 48'000 km",
+    ],
   },
   {
     name: "Skoda Fabia 1.2 TSI",
@@ -22,6 +28,12 @@ const cars = [
     mfk: "Frisch ab MFK",
     price: "CHF 4'900.-",
     image: "/skoda.jpg",
+    highlights: [
+      "Frisch ab MFK",
+      "Bluetooth-Radio",
+      "Sitzheizung",
+      "Sparsamer 1.2 TSI",
+    ],
   },
 ];
 
@@ -48,7 +60,7 @@ export default function AutoverkaufPage() {
           {cars.map((car) => (
             <div
               key={car.name}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 transition duration-300 hover:-translate-y-2 hover:border-red-500"
+              className="group overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 shadow-xl transition duration-300 hover:-translate-y-2 hover:border-red-500 hover:shadow-[0_20px_50px_rgba(255,0,0,0.25)]"
             >
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
@@ -56,7 +68,9 @@ export default function AutoverkaufPage() {
                   alt={car.name}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+
                 <div className="absolute left-6 top-6 rounded-2xl bg-red-600 px-5 py-3 text-lg font-black shadow-lg">
                   {car.price}
                 </div>
@@ -67,7 +81,16 @@ export default function AutoverkaufPage() {
                   Fahrzeug
                 </p>
 
-                <h2 className="mb-8 text-3xl font-black">{car.name}</h2>
+                <h2 className="mb-5 text-3xl font-black">{car.name}</h2>
+
+                <div className="mb-8 grid gap-2">
+                  {car.highlights.map((highlight) => (
+                    <p key={highlight} className="text-sm text-gray-300">
+                      <span className="mr-2 text-red-500">✓</span>
+                      {highlight}
+                    </p>
+                  ))}
+                </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <InfoBox label="Jahrgang" value={car.year} />
@@ -106,7 +129,13 @@ function InfoBox({
   highlight?: boolean;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+    <div
+      className={`rounded-2xl border p-4 transition ${
+        highlight
+          ? "border-red-500/60 bg-red-600/10"
+          : "border-white/10 bg-white/5"
+      }`}
+    >
       <p className="text-xs uppercase tracking-wider text-gray-500">{label}</p>
       <p className={`mt-1 font-bold ${highlight ? "text-red-500" : ""}`}>
         {value}
