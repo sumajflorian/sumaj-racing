@@ -15,7 +15,7 @@ image: "/jaguar.jpg",
 },
 {
 name: "Skoda Fabia 1.2 TSI",
-year: "2009",
+year: "2011",
 km: "148'000 km",
 motor: "1.2 TSI",
 ps: "105 PS",
