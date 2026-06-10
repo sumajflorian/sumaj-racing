@@ -5,10 +5,13 @@ export default function Navbar() {
         <img
           src="/logo.png"
           alt="Sumaj Racing Logo"
-          className="h-30 w-auto"
+          className="h-20 w-auto"
         />
 
         <div className="hidden gap-8 text-sm font-semibold uppercase tracking-wide md:flex">
+          <a href="#ueber-uns" className="hover:text-red-500">
+            Über uns
+          </a>
           <a href="#leistungen" className="hover:text-red-500">
             Leistungen
           </a>
