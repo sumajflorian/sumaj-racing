@@ -8,16 +8,18 @@ const cars = [
     year: "1998",
     km: "48'000 km",
     motor: "4.0 V8",
-    power: "284 PS",
+    ps: "284 PS",
+    mfk: "Juni 2024",
     price: "CHF 25'800.-",
     image: "/jaguar.jpg",
   },
   {
     name: "Skoda Fabia 1.2 TSI",
-    year: "2011",
+    year: "Jahrgang folgt",
     km: "148'000 km",
     motor: "1.2 TSI",
-    power: "105 PS",
+    ps: "PS folgt",
+    mfk: "Frisch ab MFK",
     price: "CHF 4'900.-",
     image: "/skoda.jpg",
   },
@@ -48,7 +50,6 @@ export default function AutoverkaufPage() {
               key={car.name}
               className="group overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 transition duration-300 hover:-translate-y-2 hover:border-red-500"
             >
-              {/* Hochformat Bild */}
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
                   src={car.image}
@@ -61,50 +62,22 @@ export default function AutoverkaufPage() {
                 <div className="absolute left-6 top-6 rounded-2xl bg-red-600 px-5 py-3 text-lg font-black shadow-lg">
                   {car.price}
                 </div>
-
-                <div className="absolute bottom-6 left-6">
-                  <p className="mb-2 text-sm uppercase tracking-[0.3em] text-red-500">
-                    Sumaj Racing
-                  </p>
-
-                  <h2 className="text-3xl font-black uppercase">
-                    {car.name}
-                  </h2>
-                </div>
               </div>
 
-              {/* Fahrzeugdaten */}
               <div className="p-8">
+                <p className="mb-3 uppercase tracking-[0.3em] text-red-500">
+                  Fahrzeug
+                </p>
+
+                <h2 className="mb-8 text-3xl font-black">{car.name}</h2>
+
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-wider text-gray-500">
-                      Jahrgang
-                    </p>
-                    <p className="mt-1 font-bold">{car.year}</p>
-                  </div>
-
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-wider text-gray-500">
-                      Kilometer
-                    </p>
-                    <p className="mt-1 font-bold">{car.km}</p>
-                  </div>
-
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-wider text-gray-500">
-                      Motor
-                    </p>
-                    <p className="mt-1 font-bold">{car.power}</p>
-                  </div>
-
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-wider text-gray-500">
-                      Preis
-                    </p>
-                    <p className="mt-1 font-bold text-red-500">
-                      {car.price}
-                    </p>
-                  </div>
+                  <InfoBox label="Jahrgang" value={car.year} />
+                  <InfoBox label="Kilometer" value={car.km} />
+                  <InfoBox label="Motor" value={car.motor} />
+                  <InfoBox label="PS" value={car.ps} />
+                  <InfoBox label="Letzte MFK" value={car.mfk} />
+                  <InfoBox label="Preis" value={car.price} highlight />
                 </div>
 
                 <a
@@ -122,5 +95,24 @@ export default function AutoverkaufPage() {
       <Footer />
       <WhatsappButton />
     </main>
+  );
+}
+
+function InfoBox({
+  label,
+  value,
+  highlight = false,
+}: {
+  label: string;
+  value: string;
+  highlight?: boolean;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+      <p className="text-xs uppercase tracking-wider text-gray-500">{label}</p>
+      <p className={`mt-1 font-bold ${highlight ? "text-red-500" : ""}`}>
+        {value}
+      </p>
+    </div>
   );
 }
